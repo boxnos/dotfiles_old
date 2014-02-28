@@ -27,6 +27,9 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 
+NeoBundle 'Shougo/vimshell.vim'
+let g:vimshell_right_prompt = '"[" . substitute(getcwd(), "^' . $HOME . '", "~", "") . "]"'
+
 NeoBundle 'Shougo/unite.vim'
 
 NeoBundle 'tyru/open-browser.vim'
