@@ -10,7 +10,7 @@ zle -N predict-off
 # zstyle ':predict' verbose true
 zstyle ':predict' toggle true
 
-HISTFILE=$HOME/.zsh-history           # 履歴をファイルに保存する
+HISTFILE=$HOME/.zsh/.zsh-history           # 履歴をファイルに保存する
 HISTSIZE=100000                       # メモリ内の履歴の数
 SAVEHIST=100000                       # 保存される履歴の数
 setopt extended_history               # 履歴ファイルに時刻を記録
