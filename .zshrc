@@ -1,5 +1,39 @@
-autoload -U compinit; compinit
+autoload -U compinit
+fpath=(~/.zsh/zsh-completions/src $fpath)
+compinit
+
+autoload predict-on
+zle-line-init() { predict-on }
+zle -N zle-line-init
+zle -N predict-on
+zle -N predict-off
+# zstyle ':predict' verbose true
+zstyle ':predict' toggle true
+
+HISTFILE=$HOME/.zsh-history           # 履歴をファイルに保存する
+HISTSIZE=100000                       # メモリ内の履歴の数
+SAVEHIST=100000                       # 保存される履歴の数
+setopt extended_history               # 履歴ファイルに時刻を記録
+function history-all { history -E 1 } # 全履歴の一覧を出力する
+
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
 
 PROMPT="%% "
 RPROMPT="[%~]"
 
+# edit with $EDITOR
+export EDITOR=vim
+autoload edit-command-line
+zle -N edit-command-line
+# M-e
+bindkey "\ee" edit-command-line
+
+# path
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+hash -d dot-install=~/work/study/dot-install
