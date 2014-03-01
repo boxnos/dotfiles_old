@@ -51,6 +51,7 @@ NeoBundle 'tpope/vim-surround'
 
 " Ruby/Rails
 NeoBundle 'tpope/vim-rails'
+autocmd FileType ruby let g:neocomplcache_force_overwrite_completefunc = 1
 " let g:neocomplcache_omni_patterns = {}
 " let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 " autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
