@@ -28,7 +28,7 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 NeoBundle 'Shougo/vimshell.vim'
-let g:vimshell_right_prompt = '"[" . substitute(getcwd(), "^' . $HOME . '", "~", "") . "]"'
+let g:vimshell_right_prompt = '"[" . fnamemodify(getcwd(), ":~") . "]"'
 
 NeoBundle 'Shougo/unite.vim'
 
