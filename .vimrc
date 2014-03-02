@@ -155,6 +155,9 @@ set history=10000
 " avoid :intro
 set shortmess+=I
 
+" command line
+set wildmode=list:longest,full
+
 " mouse
 if has('mouse')
   if has('mouse_sgr')
