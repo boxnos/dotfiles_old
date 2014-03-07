@@ -10,6 +10,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neocomplcache.vim'
+let g:neocomplcache_temporary_dir = "$HOME/.cache/neocomplcache"
 setlocal omnifunc=syntaxcomplete#Complete
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_min_syntax_length = 2
