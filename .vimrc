@@ -31,6 +31,7 @@ NeoBundle 'Shougo/vimshell.vim'
 let g:vimshell_right_prompt = '"[" . fnamemodify(getcwd(), ":~") . "]"'
 
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 
 NeoBundle 'tyru/open-browser.vim'
 let g:openbrowser_open_commands = ["ff"]
