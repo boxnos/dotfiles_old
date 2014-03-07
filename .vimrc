@@ -144,6 +144,11 @@ else
   colorscheme hybrid
 endif
 
+" WhitespaceEOL
+" http://d.hatena.ne.jp/tasukuchan/20070816/1187246177
+highlight WhitespaceEOL ctermbg=238 guibg=grey50
+match WhitespaceEOL /\s\+$/
+
 " }}}
 
 filetype plugin indent on
