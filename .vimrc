@@ -181,20 +181,28 @@ if has("gui_running")
   set guifont=Ricty\ 11
   set guioptions-=T
 endif
-" save window position and window size {{{
-let s:save_size = $HOME . "/.vim/savesize.vim"
 
-au GUIEnter * if filereadable(s:save_size) | execute 'source ' . s:save_size | endif
-function! SaveSizes()
-  execute 'redir! > ' . s:save_size
-  echo 'if exists(":winpos") == 2'
-  echo "\t:winpos " . getwinposx() . " " . getwinposy()
-  echo "endif"
-  echo "set columns=" . &columns
-  echo "set lines=" . &lines
-  redir END
-endfunction
-au VimLeave * if has("gui_running") | silent call SaveSizes() | endif
+" save window position and window size {{{
+" Vim-users.jp - Hack #120: gVim でウィンドウの位置とサイズを記憶する - http://vim-users.jp/2010/01/hack120/
+if has("gui_running")
+  let g:save_window_file = expand("~/.vim/savesize.vim")
+  augroup SaveWindow
+    autocmd!
+    autocmd VimLeavePre * call s:save_window()
+    function! s:save_window()
+      let options = [
+        \ 'set columns=' . &columns,
+        \ 'set lines=' . &lines,
+        \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+        \ ]
+      call writefile(options, g:save_window_file)
+    endfunction
+  augroup END
+
+  if filereadable(g:save_window_file)
+    execute 'source' g:save_window_file
+  endif
+endif
 " }}}
 " }}}
 
