@@ -35,4 +35,22 @@ bindkey "\ee" edit-command-line
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# http://blog.geta6.net/post/60605922314/zstyle-command-path-path改
+function zstyle-command-path() {
+  typeset -a not_sbin_path
+  for it in $path; do
+    [[ sbin != ${it##*/} ]] && not_sbin_path=($not_sbin_path $it)
+  done
+
+  case ${UID} in
+    0)
+      zstyle ':completion:*' command-path $path
+      ;;
+    *)
+      zstyle ':completion:*' command-path $not_sbin_path
+      zstyle ':completion:*:sudo:*' command-path $path
+      ;;
+  esac
+}
+zstyle-command-path
 hash -d dot-install=~/work/study/dot-install
