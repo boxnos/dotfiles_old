@@ -12,7 +12,7 @@ SAVEHIST=100000                       # 保存される履歴の数
 setopt extended_history               # 履歴ファイルに時刻を記録
 function history-all { history -E 1 } # 全履歴の一覧を出力する
 
-autoload history-search-end
+autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
