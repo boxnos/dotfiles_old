@@ -53,4 +53,6 @@ function zstyle-command-path() {
   esac
 }
 zstyle-command-path
+
+# hash
 hash -d dot-install=~/work/study/dot-install
