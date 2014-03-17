@@ -2,7 +2,8 @@ autoload -U compinit
 fpath=(~/.zsh/zsh-completions/src $fpath)
 compinit
 
-source ~/.zsh/predict.config.zsh
+# predict
+# source ~/.zsh/predict.config.zsh
 # source ~/.zsh/auto-fu.config.zsh
 
 HISTFILE=$HOME/.zsh/.zsh-history           # 履歴をファイルに保存する
