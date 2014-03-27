@@ -162,6 +162,9 @@ set history=10000
 " avoid :intro
 set shortmess+=I
 
+" o,O action
+set cpoptions+=#
+
 " command line
 set wildmode=list:longest,full
 
