@@ -157,6 +157,7 @@ filetype plugin indent on
 " basic {{{
 set notimeout
 set history=10000
+set noswapfile
 "set clipboard=unnamed
 
 " avoid :intro
