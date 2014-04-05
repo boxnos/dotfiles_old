@@ -180,6 +180,12 @@ if has('mouse')
 endif
 " }}}
 
+" search {{{
+set incsearch
+set ignorecase
+set smartcase
+" }}}
+
 " GUI {{{
 if has("gui_running")
   set guifont=Ricty\ 11
