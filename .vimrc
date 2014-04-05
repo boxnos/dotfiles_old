@@ -233,6 +233,16 @@ inoremap < <><LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 inoremap <C-z>; <C-O>$;
+
+" とりあえず {{{
+inoremap <C-y>" ""<left>
+inoremap <C-y>' ''<left>
+inoremap <C-y>( ()<left>
+inoremap <C-y>{ {}<left>
+inoremap <C-y>[ []<left>
+inoremap <C-y>< <><left>
+inoremap <C-y>% <% %><left><left><left>
+" }}}
 " }}}
 
 " indent {{{
@@ -279,16 +289,6 @@ set statusline+=%4l/%4L  " 行番号
 " set statusline+=\ %3c    " 列
 " set statusline+=\ %4B    " 文字コード
 set statusline+=%<       " 折り返しの指定
-" }}}
-
-" とりあえず {{{
-inoremap <C-y>" ""<left>
-inoremap <C-y>' ''<left>
-inoremap <C-y>( ()<left>
-inoremap <C-y>{ {}<left>
-inoremap <C-y>[ []<left>
-inoremap <C-y>< <><left>
-inoremap <C-y>% <% %><left><left><left>
 " }}}
 
 " alt {{{
