@@ -29,8 +29,16 @@ RPROMPT="[%~]"
 export EDITOR=vim
 autoload edit-command-line
 zle -N edit-command-line
+
 # M-e
 bindkey "\ee" edit-command-line
+
+# vim
+foreground-vim() {
+  fg %vim
+}
+zle -N foreground-vim
+bindkey '^Z' foreground-vim
 
 # zstyle
 zstyle ':completion:*:sudo:*' command-path $path
