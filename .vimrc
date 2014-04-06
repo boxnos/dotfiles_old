@@ -31,7 +31,18 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/vimshell.vim'
 let g:vimshell_right_prompt = '"[" . fnamemodify(getcwd(), ":~") . "]"'
 
+" Unite {{{
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'basyura/unite-rails'
+nnoremap    [unite]   <Nop>
+nmap    <Leader>u [unite]
+nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
+nnoremap <silent> [unite]f :<C-u>Unite<Space>file<CR>
+nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
+nnoremap [unite]r :<C-u>Unite<Space>rails/
+" }}}
+
 NeoBundle 'Shougo/neomru.vim'
 
 NeoBundle 'tyru/open-browser.vim'
