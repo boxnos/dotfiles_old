@@ -46,6 +46,8 @@ nnoremap [unite]r :<C-u>Unite<Space>rails/
 NeoBundle 'Shougo/neomru.vim'
 
 NeoBundle 'tyru/open-browser.vim'
+" need install ~/bin/ff
+" /bin/firefox "$@" >& /dev/null
 let g:openbrowser_open_commands = ["ff"]
 
 NeoBundle 'thinca/vim-quickrun'
