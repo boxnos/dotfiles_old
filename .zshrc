@@ -34,11 +34,13 @@ zle -N edit-command-line
 bindkey "\ee" edit-command-line
 
 # vim
-foreground-vim() {
-  fg %vim
+foreground() {
+  echo
+  fg
+  zle reset-prompt
 }
-zle -N foreground-vim
-bindkey '^Z' foreground-vim
+zle -N foreground
+bindkey '^Z' foreground
 
 # zstyle
 zstyle ':completion:*:sudo:*' command-path $path
