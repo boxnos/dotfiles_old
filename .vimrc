@@ -170,8 +170,10 @@ filetype plugin indent on
 " basic {{{
 set notimeout
 set history=10000
-set noswapfile
 "set clipboard=unnamed
+
+set directory=/.vim/tmp
+set backupdir=/.vim/tmp
 
 " avoid :intro
 set shortmess+=I
