@@ -277,7 +277,18 @@ set nowrap
 " }}}
 
 " Quickfix {{{
-au QuickfixCmdPost make,grep,grepadd,vimgrep copen
+augroup quick
+  au! QuickfixCmdPost grep,grepadd,vimgrep copen
+  au! QuickfixCmdPost make call s:Open_quickfix_window()
+augroup END
+
+function! s:Open_quickfix_window()
+  for e in filter(getqflist(), 'v:val.valid != 0')
+    copen
+    return
+  endfor
+  cclose
+endfunction
 " }}}
 
 " status line {{{
