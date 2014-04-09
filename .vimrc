@@ -172,8 +172,8 @@ set notimeout
 set history=10000
 "set clipboard=unnamed
 
-set directory=/.vim/tmp
-set backupdir=/.vim/tmp
+set directory=~/.vim/tmp
+set backupdir=~/.vim/tmp
 
 " avoid :intro
 set shortmess+=I
