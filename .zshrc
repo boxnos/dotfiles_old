@@ -1,5 +1,6 @@
 autoload -U compinit
 fpath=(~/.zsh/zsh-completions/src $fpath)
+fpath=(~/.zsh/completions $fpath)
 compinit
 
 # predict
@@ -44,6 +45,7 @@ bindkey '^Z' foreground
 
 # zstyle
 zstyle ':completion:*:sudo:*' command-path $path
+zstyle ':completion:*:bundle exec:*' command-path $path
 
 # hash
 hash -d study=~/work/study
