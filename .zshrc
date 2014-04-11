@@ -47,6 +47,4 @@ bindkey '^Z' foreground
 zstyle ':completion:*:sudo:*' command-path $path
 zstyle ':completion:*:bundle exec:*' command-path $path
 
-# hash
-hash -d study=~/work/study
-hash -d dot-install=~/work/study/dot-install
+source ~/.zsh/hashes.zsh
