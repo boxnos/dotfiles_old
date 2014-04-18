@@ -31,11 +31,15 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'Shougo/vimshell.vim'
 let g:vimshell_right_prompt = '"[" . fnamemodify(getcwd(), ":~") . "]"'
 
+function! s:awsome_map(mode, name, key)
+  exe a:mode . 'noremap [' . a:name . '] <Nop>'
+  exe a:mode . 'map ' . a:key . ' [' . a:name . ']'
+endfunction
+
 " Unite {{{
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'basyura/unite-rails'
-nnoremap    [unite]   <Nop>
-nmap    <Leader>u [unite]
+call s:awsome_map("n", "unite", "<Leader>u")
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
 nnoremap <silent> [unite]f :<C-u>Unite<Space>file<CR>
@@ -49,6 +53,12 @@ NeoBundle 'tyru/open-browser.vim'
 " need install ~/bin/ff
 " /bin/firefox "$@" >& /dev/null
 let g:openbrowser_browser_commands = [{'name' : 'ff', 'args' : ['{browser}', '{uri}']}]
+call s:awsome_map("n", "OB", "<Leader>o")
+call s:awsome_map("v", "OB", "<Leader>o")
+nmap [OB]o <Plug>(openbrowser-open)
+vmap [OB]o <Plug>(openbrowser-open)
+nmap [OB]s <Plug>(openbrowser-smart-search)
+vmap [OB]s <Plug>(openbrowser-smart-search)
 
 NeoBundle 'thinca/vim-quickrun'
 let g:quickrun_config = {}
