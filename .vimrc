@@ -48,7 +48,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'tyru/open-browser.vim'
 " need install ~/bin/ff
 " /bin/firefox "$@" >& /dev/null
-let g:openbrowser_open_commands = ["ff"]
+let g:openbrowser_browser_commands = [{'name' : 'ff', 'args' : ['{browser}', '{uri}']}]
 
 NeoBundle 'thinca/vim-quickrun'
 let g:quickrun_config = {}
