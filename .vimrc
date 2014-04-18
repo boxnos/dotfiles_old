@@ -67,8 +67,9 @@ let g:quickrun_config._ = {
       \       "outputter/buffer/close_on_empty" : 1
       \   }
 let g:quickrun_config.python = {'command' : 'python3'}
-let g:quickrun_config.html = {'exec' : '%c %s 2> /dev/null', 'command' : 'ff'}
-let g:quickrun_config.slim = {'exec' : '%crb -p %s > %s:r.html \&\& ff %s:r.html 2> /dev/null'}
+let g:quickrun_config.html = {'command': 'ff'}
+let g:quickrun_config.slim = {'command' : 'slimrb', 'exec' : '%c -p %s > %s:r.html \&\& ff %s:r.html'}
+" let g:quickrun_config.slim = {'command' : 'slimrb', 'exec' : '%c -p %s', 'outputter' : 'browser'}
 let g:quickrun_config.markdown = {'command' : 'kramdown', 'outputter': 'browser'}
 let g:quickrun_config.haskell = {'command' : 'ghci', 'runner' : 'shell'}
 
@@ -84,7 +85,8 @@ autocmd FileType ruby let g:neocomplcache_force_overwrite_completefunc = 1
 " let g:neocomplcache#sources#rsense#home_directory = '~/.vim/opt/rsense'
 
 " slim
-NeoBundle 'slim-template/vim-slim'
+NeoBundle 'sorah/vim-slim'
+" NeoBundle 'slim-template/vim-slim'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
