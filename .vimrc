@@ -91,6 +91,7 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 let g:html_indent_inctags="html,body,head"
 NeoBundle 'othree/html5.vim'
+NeoBundle 'groenewege/vim-less'
 
 " zen {{{
 NeoBundle 'mattn/emmet-vim'
