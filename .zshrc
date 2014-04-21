@@ -1,5 +1,5 @@
 autoload -U compinit
-fpath=(~/.zsh/zsh-completions/src $fpath)
+fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 fpath=(~/.zsh/completions $fpath)
 compinit
 
@@ -23,6 +23,9 @@ bindkey "^N" history-beginning-search-forward-end
 # cd
 setopt auto_pushd
 
+export _Z_DATA=~/.cache/.z
+source ~/.zsh/plugins/z/z.sh
+
 PROMPT="%% "
 RPROMPT="[%~]"
 
@@ -30,7 +33,6 @@ RPROMPT="[%~]"
 export EDITOR=vim
 autoload edit-command-line
 zle -N edit-command-line
-
 # M-e
 bindkey "\ee" edit-command-line
 
@@ -47,4 +49,5 @@ bindkey '^Z' foreground
 zstyle ':completion:*:sudo:*' command-path $path
 zstyle ':completion:*:bundle exec:*' command-path $path
 
+# hashes
 source ~/.zsh/hashes.zsh
