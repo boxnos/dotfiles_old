@@ -11,13 +11,20 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neocomplcache.vim'
 let g:neocomplcache_temporary_dir = "$HOME/.cache/neocomplcache"
-setlocal omnifunc=syntaxcomplete#Complete
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_min_syntax_length = 2
 
 inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
 " imap <expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<c-n>" : "\<tab>"
+
+NeoBundle 'Shougo/neocomplcache-rsense.vim'
+let g:neocomplcache#sources#rsense#home_directory = '~/opt/rsense'
+
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
