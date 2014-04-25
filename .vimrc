@@ -16,10 +16,12 @@ let g:neocomplcache_min_syntax_length = 2
 
 inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-" imap <expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<c-n>" : "\<tab>"
 
 NeoBundle 'Shougo/neocomplcache-rsense.vim'
-let g:neocomplcache#sources#rsense#home_directory = '~/opt/rsense'
+let g:neocomplcache#sources#rsense#home_directory = $RSENCE_HOME
+
+" let g:rsenseHome = $HOME . "/opt/rsense"
+" let g:rsenseUseOmniFunc = 1
 
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
