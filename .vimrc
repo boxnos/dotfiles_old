@@ -294,6 +294,9 @@ let g:html_indent_inctags="html,body,head"
 NeoBundle 'othree/html5.vim'
 NeoBundle 'groenewege/vim-less'
 
+" Japanese
+NeoBundle 'banyan/recognize_charcode.vim'
+
 " zen {{{
 NeoBundle 'mattn/emmet-vim'
 let g:user_emmet_settings = {
