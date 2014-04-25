@@ -1,3 +1,183 @@
+" basic {{{
+set notimeout
+set history=10000
+"set clipboard=unnamed
+
+set directory=~/.vim/tmp
+set backupdir=~/.vim/tmp
+
+" avoid :intro
+set shortmess+=I
+
+" o,O action
+set cpoptions+=#
+
+" command line
+set wildmode=list:longest,full
+" }}}
+
+" mouse {{{
+if has('mouse')
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
+  set mouse=a
+endif
+"}}}
+
+" search {{{
+set incsearch
+set ignorecase
+set smartcase
+" }}}
+
+" GUI {{{
+if has("gui_running")
+  set guifont=Ricty\ 11
+  set guioptions-=T
+endif
+
+" save window position and window size {{{
+" Vim-users.jp - Hack #120: gVim でウィンドウの位置とサイズを記憶する - http://vim-users.jp/2010/01/hack120/
+if has("gui_running")
+  let g:save_window_file = expand("~/.vim/savesize.vim")
+  augroup SaveWindow
+    autocmd!
+    autocmd VimLeavePre * call s:save_window()
+    function! s:save_window()
+      let options = [
+        \ 'set columns=' . &columns,
+        \ 'set lines=' . &lines,
+        \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+        \ ]
+      call writefile(options, g:save_window_file)
+    endfunction
+  augroup END
+
+  if filereadable(g:save_window_file)
+    execute 'source' g:save_window_file
+  endif
+endif
+" }}}
+" }}}
+
+" map {{{
+
+" キーコードはすぐにタイムアウト。マッピングはタイムアウトしない
+set notimeout ttimeout ttimeoutlen=1000
+
+cnoremap <C-P> <UP>
+cnoremap <C-N> <Down>
+cnoremap <Up> <C-P>
+cnoremap <Up> <C-N>
+
+inoremap { {}<LEFT>
+inoremap ( ()<LEFT>
+inoremap [ []<LEFT>
+inoremap < <><LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap <C-z>; <C-O>$;
+
+" とりあえず {{{
+inoremap <C-y>" ""<left>
+inoremap <C-y>' ''<left>
+inoremap <C-y>( ()<left>
+inoremap <C-y>{ {}<left>
+inoremap <C-y>[ []<left>
+inoremap <C-y>< <><left>
+inoremap <C-y>% <% %><left><left><left>
+" }}}
+" }}}
+
+" indent {{{
+aug All
+  au!
+  au FileType * setl formatoptions-=ro
+  au Filetype * setl cindent ts=8 sw=2 sts=2 et
+  au Filetype c,cpp,java setl cindent ts=8 sw=4 sts=4 et
+  au Filetype * setl cinoptions=0:,(0                      " )
+  au Filetype lisp,scheme setl cindent& ts=8 sw=2 sts=2 et
+"  au Filetype vim,ruby,zsh,sh,python setl ts=8 sw=2 sts=2 et
+  au Filetype make setl ts=8 sw=8 sts=8 noet
+  au BufRead,BufNewFile *.gradle set filetype=groovy
+aug END
+
+set nowrap
+" }}}
+
+" Quickfix {{{
+augroup quick
+  au! QuickfixCmdPost grep,grepadd,vimgrep copen
+  au! QuickfixCmdPost make call s:Open_quickfix_window()
+augroup END
+
+function! s:Open_quickfix_window()
+  for e in filter(getqflist(), 'v:val.valid != 0')
+    copen
+    return
+  endfor
+  cclose
+endfunction
+" }}}
+
+" status line {{{
+set showcmd
+set cmdheight=1
+set laststatus=2
+set wildmenu
+
+set statusline=
+set statusline+=[*%n]\  " バッファ番号
+set statusline+=%f\     " ファイル名
+set statusline+=%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'} " 文字コード
+set statusline+=%y      " ファイルタイプ
+set statusline+=%r      " 読み取り専用フラグ
+set statusline+=%h      " ヘルプバッファ
+set statusline+=%w      " プレビューウィンドウ
+set statusline+=%m      " バッファ状態[+]とか
+
+set statusline+=%=      " 区切り
+
+"set statusline+=\ %{strftime('%c')}  " 時間
+set statusline+=%4l/%4L  " 行番号
+" set statusline+=%4p%%    " どこにいるか
+" set statusline+=\ %3c    " 列
+" set statusline+=\ %4B    " 文字コード
+set statusline+=%<       " 折り返しの指定
+" }}}
+
+" alt {{{
+" 端末の Vim でも Alt キーを使う - 永遠に未完成 http://d.hatena.ne.jp/thinca/20101215/1292340358
+" nomal mode only
+" if has('unix') && !has('gui_running')
+"   " Use meta keys in console.
+"   function! s:use_meta_keys()
+"     for i in map(
+"     \   range(char2nr('a'), char2nr('z'))
+"     \ + range(char2nr('A'), char2nr('Z'))
+"     \ + range(char2nr('0'), char2nr('9'))
+"     \ , 'nr2char(v:val)')
+"       " <ESC>O do not map because used by arrow keys.
+"       if i != 'O'
+"         execute 'nmap <ESC>' . i '<M-' . i . '>'
+"       endif
+"     endfor
+"   endfunction
+"
+"   call s:use_meta_keys()
+"   map <NUL> <C-Space>
+"   map! <NUL> <C-Space>
+" endif
+" }}}
+
+" Rename {{{
+" Vim-users.jp - Hack #17: Vimを終了することなく編集中ファイルのファイル名を変更する http://vim-users.jp/2009/05/hack17/
+command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
+" }}}
+
 " plugins {{{
 set nocompatible
 filetype off
@@ -187,185 +367,6 @@ match WhitespaceEOL /\s\+$/
 " }}}
 
 filetype plugin indent on
-" }}}
-
-" basic {{{
-set notimeout
-set history=10000
-"set clipboard=unnamed
-
-set directory=~/.vim/tmp
-set backupdir=~/.vim/tmp
-
-" avoid :intro
-set shortmess+=I
-
-" o,O action
-set cpoptions+=#
-
-" command line
-set wildmode=list:longest,full
-
-" mouse
-if has('mouse')
-  if has('mouse_sgr')
-    set ttymouse=sgr
-  else
-    set ttymouse=xterm2
-  endif
-  set mouse=a
-endif
-" }}}
-
-" search {{{
-set incsearch
-set ignorecase
-set smartcase
-" }}}
-
-" GUI {{{
-if has("gui_running")
-  set guifont=Ricty\ 11
-  set guioptions-=T
-endif
-
-" save window position and window size {{{
-" Vim-users.jp - Hack #120: gVim でウィンドウの位置とサイズを記憶する - http://vim-users.jp/2010/01/hack120/
-if has("gui_running")
-  let g:save_window_file = expand("~/.vim/savesize.vim")
-  augroup SaveWindow
-    autocmd!
-    autocmd VimLeavePre * call s:save_window()
-    function! s:save_window()
-      let options = [
-        \ 'set columns=' . &columns,
-        \ 'set lines=' . &lines,
-        \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
-        \ ]
-      call writefile(options, g:save_window_file)
-    endfunction
-  augroup END
-
-  if filereadable(g:save_window_file)
-    execute 'source' g:save_window_file
-  endif
-endif
-" }}}
-" }}}
-
-" map {{{
-
-" キーコードはすぐにタイムアウト。マッピングはタイムアウトしない
-set notimeout ttimeout ttimeoutlen=1000
-
-cnoremap <C-P> <UP>
-cnoremap <C-N> <Down>
-cnoremap <Up> <C-P>
-cnoremap <Up> <C-N>
-
-inoremap { {}<LEFT>
-inoremap ( ()<LEFT>
-inoremap [ []<LEFT>
-inoremap < <><LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-inoremap <C-z>; <C-O>$;
-
-" とりあえず {{{
-inoremap <C-y>" ""<left>
-inoremap <C-y>' ''<left>
-inoremap <C-y>( ()<left>
-inoremap <C-y>{ {}<left>
-inoremap <C-y>[ []<left>
-inoremap <C-y>< <><left>
-inoremap <C-y>% <% %><left><left><left>
-" }}}
-" }}}
-
-" indent {{{
-aug All
-  au!
-  au FileType * setl formatoptions-=ro
-  au Filetype * setl cindent ts=8 sw=2 sts=2 et
-  au Filetype c,cpp,java setl cindent ts=8 sw=4 sts=4 et
-  au Filetype * setl cinoptions=0:,(0                      " )
-  au Filetype lisp,scheme setl cindent& ts=8 sw=2 sts=2 et
-"  au Filetype vim,ruby,zsh,sh,python setl ts=8 sw=2 sts=2 et
-  au Filetype make setl ts=8 sw=8 sts=8 noet
-  au BufRead,BufNewFile *.gradle set filetype=groovy
-aug END
-
-set nowrap
-" }}}
-
-" Quickfix {{{
-augroup quick
-  au! QuickfixCmdPost grep,grepadd,vimgrep copen
-  au! QuickfixCmdPost make call s:Open_quickfix_window()
-augroup END
-
-function! s:Open_quickfix_window()
-  for e in filter(getqflist(), 'v:val.valid != 0')
-    copen
-    return
-  endfor
-  cclose
-endfunction
-" }}}
-
-" status line {{{
-set showcmd
-set cmdheight=1
-set laststatus=2
-set wildmenu
-
-set statusline=
-set statusline+=[*%n]\  " バッファ番号
-set statusline+=%f\     " ファイル名
-set statusline+=%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'} " 文字コード
-set statusline+=%y      " ファイルタイプ
-set statusline+=%r      " 読み取り専用フラグ
-set statusline+=%h      " ヘルプバッファ
-set statusline+=%w      " プレビューウィンドウ
-set statusline+=%m      " バッファ状態[+]とか
-
-set statusline+=%=      " 区切り
-
-"set statusline+=\ %{strftime('%c')}  " 時間
-set statusline+=%4l/%4L  " 行番号
-" set statusline+=%4p%%    " どこにいるか
-" set statusline+=\ %3c    " 列
-" set statusline+=\ %4B    " 文字コード
-set statusline+=%<       " 折り返しの指定
-" }}}
-
-" alt {{{
-" 端末の Vim でも Alt キーを使う - 永遠に未完成 http://d.hatena.ne.jp/thinca/20101215/1292340358
-" nomal mode only
-" if has('unix') && !has('gui_running')
-"   " Use meta keys in console.
-"   function! s:use_meta_keys()
-"     for i in map(
-"     \   range(char2nr('a'), char2nr('z'))
-"     \ + range(char2nr('A'), char2nr('Z'))
-"     \ + range(char2nr('0'), char2nr('9'))
-"     \ , 'nr2char(v:val)')
-"       " <ESC>O do not map because used by arrow keys.
-"       if i != 'O'
-"         execute 'nmap <ESC>' . i '<M-' . i . '>'
-"       endif
-"     endfor
-"   endfunction
-"
-"   call s:use_meta_keys()
-"   map <NUL> <C-Space>
-"   map! <NUL> <C-Space>
-" endif
-" }}}
-
-" Rename {{{
-" Vim-users.jp - Hack #17: Vimを終了することなく編集中ファイルのファイル名を変更する http://vim-users.jp/2009/05/hack17/
-command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 " }}}
 
 " vim:set foldmethod=marker:
