@@ -29,6 +29,7 @@ setopt auto_pushd
 export _Z_DATA=~/.cache/.z
 source $PLUGINS/z/z.sh
 
+# prompt
 PROMPT="%% "
 RPROMPT="[%~]"
 
