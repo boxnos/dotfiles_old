@@ -1,5 +1,5 @@
-/.zsh/
-!/.zsh/completions/
+/.zsh/*
 
+!/.zsh/completions/
 !/.zsh/auto-fu.config.zsh
 !/.zsh/predict.config.zsh
