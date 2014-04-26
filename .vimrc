@@ -1,10 +1,13 @@
 " basic {{{
+set nocompatible
+
 set notimeout
 set history=10000
 "set clipboard=unnamed
 
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
+set viminfo+=n~/.vim/tmp/viminfo
 
 " avoid :intro
 set shortmess+=I
@@ -179,7 +182,6 @@ command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 " }}}
 
 " plugins {{{
-set nocompatible
 filetype off
 
 " NeoBundle
