@@ -1,5 +1,7 @@
+PLUGINS=~/.zsh/plugins
+
 autoload -U compinit
-fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
+fpath=($PLUGINS/zsh-completions/src $fpath)
 fpath=(~/.zsh/completions $fpath)
 compinit
 
@@ -23,8 +25,9 @@ bindkey "^N" history-beginning-search-forward-end
 # cd
 setopt auto_pushd
 
+# z
 export _Z_DATA=~/.cache/.z
-source ~/.zsh/plugins/z/z.sh
+source $PLUGINS/z/z.sh
 
 PROMPT="%% "
 RPROMPT="[%~]"
