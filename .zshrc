@@ -1,8 +1,8 @@
 PLUGINS=~/.zsh/plugins
 
 autoload -U compinit
-fpath=($PLUGINS/zsh-completions/src $fpath)
 fpath=(~/.zsh/completions $fpath)
+fpath=($PLUGINS/zsh-completions/src $fpath)
 compinit
 
 # predict
