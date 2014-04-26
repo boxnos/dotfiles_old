@@ -12,6 +12,9 @@ _rake () {
     if _rake_refresh; then
       bundle exec rake --silent --tasks | cut -d " " -f 2 > .rake_tasks
       sed -i -e 's/:/\\\:/g' -e 's/\[/\\[/g' -e 's/\]/\\]/g' .rake_tasks
+      if [[ -d test ]]; then
+        find test -maxdepth 1 -type d | sed '1d; s|^test/|test\\\:|' >> .rake_tasks
+      fi
     fi
     _values "rake" $(<.rake_tasks)
   fi
