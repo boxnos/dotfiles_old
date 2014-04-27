@@ -17,6 +17,8 @@ set cpoptions+=#
 
 " command line
 set wildmode=list:longest,full
+
+set scrolloff=3
 " }}}
 
 " mouse {{{
