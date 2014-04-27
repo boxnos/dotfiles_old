@@ -45,9 +45,11 @@ bindkey "\ee" edit-command-line
 
 # vim
 foreground() {
-  echo
-  fg
-  zle reset-prompt
+  if [[ -n $(jobs) ]]; then
+    echo
+    fg
+    zle reset-prompt
+  fi
 }
 zle -N foreground
 bindkey '^Z' foreground
