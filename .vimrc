@@ -76,23 +76,21 @@ cnoremap <C-N> <Down>
 cnoremap <Up> <C-P>
 cnoremap <Up> <C-N>
 
-inoremap { {}<LEFT>
-inoremap ( ()<LEFT>
-inoremap [ []<LEFT>
-inoremap < <><LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
-inoremap <C-z>; <C-O>$;
+inoremap ( ()<LEFT>
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap < <><LEFT>
 
-" とりあえず {{{
-inoremap <C-y>" ""<left>
-inoremap <C-y>' ''<left>
-inoremap <C-y>( ()<left>
-inoremap <C-y>{ {}<left>
-inoremap <C-y>[ []<left>
-inoremap <C-y>< <><left>
-inoremap <C-y>% <% %><left><left><left>
-" }}}
+inoremap <C-y>" "
+inoremap <C-y>' '
+inoremap <C-y>( (
+inoremap <C-y>{ {
+inoremap <C-y>[ [
+inoremap <C-y>< <
+
+inoremap <C-z>; <C-O>$;
 " }}}
 
 " indent {{{
