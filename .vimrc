@@ -261,7 +261,7 @@ let g:quickrun_config.python = {'command' : 'python3'}
 let g:quickrun_config.html = {'command': 'ff'}
 let g:quickrun_config.slim = {'command' : 'slimrb', 'exec' : '%c -p %s > %s:r.html \&\& ff %s:r.html'}
 " let g:quickrun_config.slim = {'command' : 'slimrb', 'exec' : '%c -p %s', 'outputter' : 'browser'}
-let g:quickrun_config.markdown = {'command' : 'kramdown', 'outputter': 'browser'}
+let g:quickrun_config.markdown = {'command' : 'redpygments', 'cmdopt' : '-d', 'outputter': 'browser'}
 let g:quickrun_config.haskell = {'command' : 'ghci', 'runner' : 'shell'}
 
 NeoBundle 'tpope/vim-surround'
