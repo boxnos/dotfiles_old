@@ -69,9 +69,9 @@ endif
 " }}}
 
 " map {{{
-
-" キーコードはすぐにタイムアウト。マッピングはタイムアウトしない
 set notimeout ttimeout ttimeoutlen=1000
+
+noremap <Leader><Leader> "+
 
 cnoremap <C-P> <UP>
 cnoremap <C-N> <Down>
