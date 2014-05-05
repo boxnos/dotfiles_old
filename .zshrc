@@ -59,4 +59,6 @@ zstyle ':completion:*:sudo:*' command-path $path
 zstyle ':completion:*:bundle exec:*' command-path $path
 
 # hashes
+hash -d gemdir=$(gem environment gemdir)
+# private hashes
 source ~/.zsh/hashes.zsh
