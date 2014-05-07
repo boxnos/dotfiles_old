@@ -58,6 +58,11 @@ bindkey '^Z' foreground
 zstyle ':completion:*:sudo:*' command-path $path
 zstyle ':completion:*:bundle exec:*' command-path $path
 
+# ignore all
+ig() { "$@" &> /dev/null }
+_ig() { _arguments ':command:_command_names -e' '*::args:_normal' }
+compdef _ig ig
+
 # hashes
 hash -d gemdir=$(gem environment gemdir)
 # private hashes
