@@ -64,4 +64,6 @@ _ig() { _arguments ':command:_command_names -e' '*::args:_normal' }
 compdef _ig ig
 
 # hashes
+hash -d gemdir=$(gem environment gemdir)
+# private hashes
 source ~/.zsh/hashes.zsh
