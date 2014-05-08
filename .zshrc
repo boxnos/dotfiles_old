@@ -55,8 +55,8 @@ zle -N foreground
 bindkey '^Z' foreground
 
 # zstyle
-zstyle ':completion:*:sudo:*' command-path $path
-zstyle ':completion:*:bundle exec:*' command-path $path
+zstyle ':completion:*:sudo:*' command-path
+# zstyle ':completion:*:bundle exec:*' command-path ~/.rbenv/shims
 
 # ignore all
 ig() { "$@" &> /dev/null }
