@@ -100,7 +100,7 @@ aug All
   au!
   au FileType * setl formatoptions-=ro
   au Filetype * setl cindent ts=8 sw=2 sts=2 et
-  au Filetype c,cpp,java setl cindent ts=8 sw=4 sts=4 et
+  au Filetype c,cpp,java,markdown setl cindent ts=8 sw=4 sts=4 et
   au Filetype * setl cinoptions=0:,(0                      " )
   au Filetype lisp,scheme setl cindent& ts=8 sw=2 sts=2 et
 "  au Filetype vim,ruby,zsh,sh,python setl ts=8 sw=2 sts=2 et
