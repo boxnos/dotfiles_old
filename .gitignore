@@ -1,3 +1,7 @@
+/.vim/*
+
+!/.vim/after/
+
 /.zsh/*
 
 !/.zsh/completions/
