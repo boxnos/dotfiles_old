@@ -59,7 +59,7 @@ zstyle ':completion:*:sudo:*' command-path
 # zstyle ':completion:*:bundle exec:*' command-path ~/.rbenv/shims
 
 # ignore all
-ig() { "$@" &> /dev/null }
+ig() { "$@" >& /dev/null }
 _ig() { _arguments ':command:_command_names -e' '*::args:_normal' }
 compdef _ig ig
 
