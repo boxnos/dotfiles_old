@@ -64,6 +64,8 @@ _ig() { _arguments ':command:_command_names -e' '*::args:_normal' }
 compdef _ig ig
 
 # hashes
-hash -d gemdir=$(gem environment gemdir)
+hash -d gemdir=$HOME/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0
+# hash -d gemdir=$(gem environment gemdir) # heavy!
+
 # private hashes
 source ~/.zsh/hashes.zsh
