@@ -64,7 +64,7 @@ _ig() { _arguments ':command:_command_names -e' '*::args:_normal' }
 compdef _ig ig
 
 # hashes
-hash -d rubylib=$(ruby -e 'print RbConfig::CONFIG['rubylibdir']')
+hash -d rubylib=$(ruby -e "print RbConfig::CONFIG['rubylibdir']")
 hash -d gemdir=$(ruby -r rubygems -e 'print Gem.dir')
 
 # private hashes
