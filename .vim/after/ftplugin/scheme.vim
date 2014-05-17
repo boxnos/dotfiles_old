@@ -64,8 +64,6 @@ if has("mzscheme")
 ; http://pre.racket-lang.org/racket/collects/compatibility/defmacro.rkt
 (require (for-syntax racket/base syntax/stx))
 (require compatibility/defmacro) ; defmacro, define-macro
-
-; (define (square x) (* x x))
 EOF
 endif
 
