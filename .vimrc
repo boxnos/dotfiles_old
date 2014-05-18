@@ -351,6 +351,9 @@ NeoBundleLazy 'ujihisa/neco-ghc', {'autoload' : {'filetypes' : ['haskell']}}
 " PHP
 NeoBundle 'StanAngeloff/php.vim'
 
+" Scheme
+NeoBundle 'amdt/vim-niji'
+
 " filetype
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'pangloss/vim-javascript'
