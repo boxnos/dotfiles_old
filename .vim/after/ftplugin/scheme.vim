@@ -46,19 +46,6 @@ if has("mzscheme")
 :mz << EOF
 (require (prefix-in vim- 'vimext))
 
-(current-library-collection-paths
-  (cons
-    (build-path (find-system-path 'addon-dir) (version) "collects")
-    (current-library-collection-paths)))
-
-;(current-library-collection-paths
-;  (map (lambda (p) (if (bytes? p) (bytes->path p) p))
-;    (current-library-collection-paths)))
-
-(current-directory (bytes->string/locale (vim-eval "expand(\"%:p:h\")")))
-
-(require (lib "trace.ss"))
-(require (lib "process.ss"))
 (require srfi/1)
 
 ; http://pre.racket-lang.org/racket/collects/compatibility/defmacro.rkt
