@@ -152,30 +152,6 @@ set statusline+=%4l/%4L  " 行番号
 set statusline+=%<       " 折り返しの指定
 " }}}
 
-" alt {{{
-" 端末の Vim でも Alt キーを使う - 永遠に未完成 http://d.hatena.ne.jp/thinca/20101215/1292340358
-" nomal mode only
-" if has('unix') && !has('gui_running')
-"   " Use meta keys in console.
-"   function! s:use_meta_keys()
-"     for i in map(
-"     \   range(char2nr('a'), char2nr('z'))
-"     \ + range(char2nr('A'), char2nr('Z'))
-"     \ + range(char2nr('0'), char2nr('9'))
-"     \ , 'nr2char(v:val)')
-"       " <ESC>O do not map because used by arrow keys.
-"       if i != 'O'
-"         execute 'nmap <ESC>' . i '<M-' . i . '>'
-"       endif
-"     endfor
-"   endfunction
-"
-"   call s:use_meta_keys()
-"   map <NUL> <C-Space>
-"   map! <NUL> <C-Space>
-" endif
-" }}}
-
 " Rename {{{
 " Vim-users.jp - Hack #17: Vimを終了することなく編集中ファイルのファイル名を変更する http://vim-users.jp/2009/05/hack17/
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
