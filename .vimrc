@@ -1,9 +1,9 @@
 " basic {{{
 set nocompatible
 
-set notimeout
-set history=10000
-"set clipboard=unnamed
+" file
+set hidden
+set confirm
 
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
@@ -15,10 +15,46 @@ set shortmess+=I
 " o,O action
 set cpoptions+=#
 
+set scrolloff=3
+
+set notimeout
+
 " command line
 set wildmode=list:longest,full
 
-set scrolloff=3
+" search
+set incsearch
+set ignorecase
+set smartcase
+
+set history=10000
+"set clipboard=unnamed
+
+" status line {{{
+set showcmd
+set cmdheight=1
+set laststatus=2
+set wildmenu
+
+set statusline=
+set statusline+=[*%n]\  " バッファ番号
+set statusline+=%f\     " ファイル名
+set statusline+=%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'} " 文字コード
+set statusline+=%y      " ファイルタイプ
+set statusline+=%r      " 読み取り専用フラグ
+set statusline+=%h      " ヘルプバッファ
+set statusline+=%w      " プレビューウィンドウ
+set statusline+=%m      " バッファ状態[+]とか
+
+set statusline+=%=      " 区切り
+
+"set statusline+=\ %{strftime('%c')}  " 時間
+set statusline+=%4l/%4L  " 行番号
+" set statusline+=%4p%%    " どこにいるか
+" set statusline+=\ %3c    " 列
+" set statusline+=\ %4B    " 文字コード
+set statusline+=%<       " 折り返しの指定
+" }}}
 " }}}
 
 " mouse {{{
@@ -31,12 +67,6 @@ if has('mouse')
   set mouse=a
 endif
 "}}}
-
-" search {{{
-set incsearch
-set ignorecase
-set smartcase
-" }}}
 
 " GUI {{{
 if has("gui_running")
@@ -124,37 +154,6 @@ function! s:Open_quickfix_window()
   endfor
   cclose
 endfunction
-" }}}
-
-" status line {{{
-set showcmd
-set cmdheight=1
-set laststatus=2
-set wildmenu
-
-set statusline=
-set statusline+=[*%n]\  " バッファ番号
-set statusline+=%f\     " ファイル名
-set statusline+=%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'} " 文字コード
-set statusline+=%y      " ファイルタイプ
-set statusline+=%r      " 読み取り専用フラグ
-set statusline+=%h      " ヘルプバッファ
-set statusline+=%w      " プレビューウィンドウ
-set statusline+=%m      " バッファ状態[+]とか
-
-set statusline+=%=      " 区切り
-
-"set statusline+=\ %{strftime('%c')}  " 時間
-set statusline+=%4l/%4L  " 行番号
-" set statusline+=%4p%%    " どこにいるか
-" set statusline+=\ %3c    " 列
-" set statusline+=\ %4B    " 文字コード
-set statusline+=%<       " 折り返しの指定
-" }}}
-
-" Rename {{{
-" Vim-users.jp - Hack #17: Vimを終了することなく編集中ファイルのファイル名を変更する http://vim-users.jp/2009/05/hack17/
-command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 " }}}
 
 " plugins {{{
@@ -415,6 +414,11 @@ match WhitespaceEOL /\s\+$/
 " }}}
 
 filetype plugin indent on
+" }}}
+
+" Rename {{{
+" Vim-users.jp - Hack #17: Vimを終了することなく編集中ファイルのファイル名を変更する http://vim-users.jp/2009/05/hack17/
+command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 " }}}
 
 " vim:set foldmethod=marker:
