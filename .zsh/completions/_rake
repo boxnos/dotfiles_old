@@ -70,7 +70,7 @@ function _rake() {
         [[ -z "$update_policy" ]] && zstyle ":completion:$curcontext:" cache-policy _rake_cache_policy
 
         if _cache_invalid  "rake-$unique_name" || ! _retrieve_cache "rake-$unique_name"; then
-          tasks=(${(f)"$(_call_program commands rake -T 2> /dev/null | sed -e '/ # /!d; s/:/\\:/g; s/rake \([^ ]*\) .*# /\1:/')"})
+          tasks=(${(f)"$(_call_program commands bundle exec rake -T 2> /dev/null | sed -e '/ # /!d; s/:/\\:/g; s/rake \([^ ]*\) .*# /\1:/')"})
           _store_cache "rake-$unique_name" tasks
         fi
 
