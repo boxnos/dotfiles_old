@@ -48,7 +48,6 @@ set statusline+=%m      " バッファ状態[+]とか
 
 set statusline+=%=      " 区切り
 
-"set statusline+=\ %{strftime('%c')}  " 時間
 set statusline+=%4l/%4L  " 行番号
 " set statusline+=%4p%%    " どこにいるか
 " set statusline+=\ %3c    " 列
