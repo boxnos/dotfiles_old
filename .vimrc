@@ -36,23 +36,22 @@ set cmdheight=1
 set laststatus=2
 set wildmenu
 
-set statusline=
-set statusline+=[*%n]\  " バッファ番号
-set statusline+=%f\     " ファイル名
-set statusline+=%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'} " 文字コード
-set statusline+=%y      " ファイルタイプ
-set statusline+=%r      " 読み取り専用フラグ
-set statusline+=%h      " ヘルプバッファ
-set statusline+=%w      " プレビューウィンドウ
-set statusline+=%m      " バッファ状態[+]とか
-
-set statusline+=%=      " 区切り
-
-set statusline+=%4l/%4L  " 行番号
-" set statusline+=%4p%%    " どこにいるか
-" set statusline+=\ %3c    " 列
-" set statusline+=\ %4B    " 文字コード
-set statusline+=%<       " 折り返しの指定
+" left
+" %n buffer number
+" %f filename
+" encoding-rt
+" %y filetype
+" %r Readonly flag
+" %h Help buffer flag
+" %w Preview window flag
+" %m Modified flag
+" %= Separation point between left and right aligned items.
+set statusline=[*%n]\ %f\ %{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'}%y%r%h%w%m%=      " 区切り
+" right
+" %l Line number
+" %L Number of lines in buffer
+" %< Where to truncate line if too long.
+set statusline+=%4l/%4L%<
 " }}}
 " }}}
 
