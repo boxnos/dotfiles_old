@@ -124,22 +124,6 @@ inoremap <C-y>< <
 inoremap <C-z>; <C-O>$;
 " }}}
 
-" indent {{{
-aug All
-  au!
-  au FileType * setl formatoptions-=ro
-  au Filetype * setl cindent ts=8 sw=2 sts=2 et
-  au Filetype c,cpp,java,markdown setl cindent ts=8 sw=4 sts=4 et
-  au Filetype * setl cinoptions=0:,(0                      " )
-  au Filetype lisp,scheme setl cindent& ts=8 sw=2 sts=2 et
-"  au Filetype vim,ruby,zsh,sh,python setl ts=8 sw=2 sts=2 et
-  au Filetype make setl ts=8 sw=8 sts=8 noet
-  au BufRead,BufNewFile *.gradle set filetype=groovy
-aug END
-
-set nowrap
-" }}}
-
 " Quickfix {{{
 augroup quick
   au! QuickfixCmdPost grep,grepadd,vimgrep copen
@@ -413,6 +397,24 @@ match WhitespaceEOL /\s\+$/
 " }}}
 
 filetype plugin indent on
+" }}}
+
+" after 'filetype plugin on' {{{
+" off auto comment
+au FileType * setl formatoptions-=ro
+
+" indent
+aug Indent
+  au!
+  au Filetype * setl cindent ts=8 sw=2 sts=2 et
+  au Filetype * setl cinoptions=0:,(0                             " for close ):
+  au Filetype c,cpp,java,markdown setl cindent ts=8 sw=4 sts=4 et
+  au Filetype lisp,scheme setl cindent& ts=8 sw=2 sts=2 et
+  au Filetype make setl ts=8 sw=8 sts=8 noet
+  au BufRead,BufNewFile *.gradle set filetype=groovy
+aug END
+
+set nowrap
 " }}}
 
 " Rename {{{
