@@ -1,10 +1,11 @@
 " basic {{{
 set nocompatible
 
-" file
+" buffers
 set hidden
 set confirm
 
+" files
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
 set viminfo+=n~/.vim/tmp/viminfo
