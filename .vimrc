@@ -420,4 +420,4 @@ filetype plugin indent on
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 " }}}
 
-" vim:set foldmethod=marker:
+" vim: foldmethod=marker
