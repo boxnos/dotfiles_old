@@ -8,6 +8,7 @@ path=(~/.nodebrew/current/bin $path)
 path=(~/.cabal/bin $path)
 
 export GOPATH=~/.go
+export GOROOT=`go env GOROOT`
 path=(~/.go/bin $path)
 
 export RSENCE_HOME=~/opt/rsense

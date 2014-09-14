@@ -5,6 +5,11 @@ fpath=(~/.zsh/completions $fpath)
 fpath=($PLUGINS/zsh-completions/src $fpath)
 compinit
 
+# Go completion
+if [ -f $GOROOT/misc/zsh/go ]; then
+    source $GOROOT/misc/zsh/go
+fi
+
 # predict
 # source ~/.zsh/predict.config.zsh
 # source ~/.zsh/auto-fu.config.zsh
@@ -69,3 +74,4 @@ hash -d gemdir=$(ruby -r rubygems -e 'print Gem.dir')
 
 # private hashes
 source ~/.zsh/hashes.zsh
+
