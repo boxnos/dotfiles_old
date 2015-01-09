@@ -7,6 +7,9 @@ path=(~/.nodebrew/current/bin $path)
 
 path=(~/.cabal/bin $path)
 
+export JAVA_HOME=/etc/alternatives/java_sdk
+path=(~/bin/android-studio/bin $path)
+
 export GOPATH=~/.go
 export GOROOT=`go env GOROOT`
 path=(~/.go/bin $path)
